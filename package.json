@@ -1,0 +1,14 @@
+{
+  "name": "calculadora-electron",
+  "version": "1.0.0",
+  "description": "teste",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "X4M1T0",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^22.0.0"
+  }
+}
