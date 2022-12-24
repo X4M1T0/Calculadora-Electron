@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <title>Calculadora</title>
+
+
+    <!-- STYLE PAGE -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            background-color: rgb(61, 11, 139);
+        }
+
+        #numeros{
+            width: 200px;
+            height: 30px;
+            border-radius: 20px;
+            background-color: #fff;
+            color: #333;
+            text-align: right;
+            padding-right: 50px;
+            padding-top: 10px;
+            position: relative;
+            top: 50px;
+            border: 1px solid #222;
+
+        }
+
+        
+
+        /* AREA DE BOTÕES */
+        #btnArea{
+            width: 90%;
+            height: 650px;
+            position: absolute;
+            top: 120px;
+        }
+
+        .btnCalc{
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 1px solid #333;
+        }
+
+        #btnZero{
+            width: 115px;
+            border-radius: 10px;
+        }
+
+
+    </style>
+
+  </head>
+
+  <body>
+
+
+
+    <div id="top">
+        <p id="numeros"></p>
+    </div>
+
+    <div id="btnArea">
+        <button type="button" style="background-color: rgb(241, 217, 1); color: #fff;" onclick="clean()" id="btnAC" class="btnCalc">AC</button>
+        <button type="button" style="background-color: rgb(241, 217, 1); color: #fff;" onclick="clean()" id="btnC" class="btnCalc">C</button>
+        <button type="button" style="background-color: orange; color: #fff;" onclick="insert('/')" id="btnDiv" class="btnCalc">÷</button>
+        <button type="button" style="background-color: orange; color: #fff;" onclick="" id="btnPerc" class="btnCalc">%</button> <br/>
+        <button type="button" onclick="insert('9')" id="btnNine" class="btnCalc">9</button>
+        <button type="button" onclick="insert('8')" id="btnEight" class="btnCalc">8</button>
+        <button type="button" onclick="insert('7')" id="btnSeven" class="btnCalc">7</button>
+        <button type="button" style="background-color: orange; color: #fff;" onclick="insert('*')" id="btnX" class="btnCalc">x</button>
+        <button type="button" onclick="insert('6')" id="btnSix" class="btnCalc">6</button>
+        <button type="button" onclick="insert('5')" id="btnFive" class="btnCalc">5</button>
+        <button type="button" onclick="insert('4')" id="btnFour" class="btnCalc">4</button>
+        <button type="button" style="background-color: orange; color: #fff;" onclick="insert('-')" id="btnSub" class="btnCalc">-</button>
+        <button type="button" onclick="insert('3')" id="btnThree" class="btnCalc">3</button>
+        <button type="button" onclick="insert('2')" id="btnTwo" class="btnCalc">2</button>
+        <button type="button" onclick="insert('1')" id="btnOne" class="btnCalc">1</button>
+        <button type="button" style="background-color: orange; color: #fff;" onclick="insert('+')" id="btnPlus" class="btnCalc">+</button>
+        <button type="button" onclick="insert('0')" id="btnZero" class="btnCalc">0</button>
+        <button type="button" onclick="insert('.')"  id="btnVirg" class="btnCalc">.</button>
+        <button type="button" style="background-color: orange; color: #fff;" onclick="calculate()" id="btnEqu" class="btnCalc">=</button>
+    </div>
+
+
+    <!-- SCRIPT -->
+    <script>
+        function clean(){
+            document.getElementById("numeros").innerText = "";
+        }
+
+        function insert(num){
+            var numeros = document.getElementById("numeros").innerHTML;
+            document.getElementById("numeros").innerHTML = numeros + num;
+
+            var btnPerc = document.getElementById("btnPerc");
+            btnPerc.addEventListener("click", function(){
+                console.log("Perc clicked");
+                //num.tofixed(3);
+                num = num / 100;
+                document.getElementById("numeros").innerHTML = numeros + num;
+            })
+        }
+
+        function calculate(){
+            var result = document.getElementById("numeros").innerHTML;
+            if(result){
+                document.getElementById('numeros').innerHTML = eval(result);
+            }
+        }
+
+    </script>
+
+  </body>
+</html>
